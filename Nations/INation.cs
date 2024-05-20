@@ -11,6 +11,6 @@ namespace WarSimulator.Nations
     {
         public string Name { get; set; }
         public int Gold { get; set; }
-        public List<ITroop> Troops { get; set; }
+        public List<ITroop> Army { get; set; }
     }
 }

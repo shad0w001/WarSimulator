@@ -7,7 +7,7 @@ using WarSimulator.Troops.BaseInterfaces;
 
 namespace WarSimulator.Troops.TroopTypes
 {
-    public interface ILightInfantry : ITroop
+    public interface ILightInfantry : ITroop, IInfantry
     {
         
     }

@@ -11,13 +11,13 @@ namespace WarSimulator.Nations
     {
         public string Name { get; set; }
         public int Gold { get; set; }
-        public List<ITroop> Troops { get; set; }
+        public List<ITroop> Army { get; set; }
 
         public Bulgaria()
         {
             Name = "Bulgaria";
             Gold = 10000;
-            Troops = new List<ITroop>();
+            Army = new List<ITroop>();
         }
     }
 }
