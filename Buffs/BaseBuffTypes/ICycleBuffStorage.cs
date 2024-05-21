@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarSimulator.Buffs.BaseBuffTypes
 {
-    public interface ICycleBuff : IBuff
+    public interface ICycleBuffStorage : IBuffStorage
     {
 
     }
