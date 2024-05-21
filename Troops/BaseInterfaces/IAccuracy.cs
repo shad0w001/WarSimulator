@@ -8,6 +8,6 @@ namespace WarSimulator.Troops.BaseInterfaces
 {
     public interface IAccuracy
     {
-        public int Accuracy { get; set; }
+        public double Accuracy { get; set; }
     }
 }

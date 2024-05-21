@@ -11,11 +11,11 @@ namespace WarSimulator.Troops.Bulgaria
 {
     public class BulgarianArmoredInfantry : IArmoredInfantry
     {
-        public int Attack { get; set; }
-        public int Defence { get; set; }
-        public int Speed { get; set; }
-        public int Life { get; set; }
-        public int Price { get; set; }
+        public double Attack { get; set; }
+        public double Defence { get; set; }
+        public double Speed { get; set; }
+        public double Life { get; set; }
+        public double Price { get; set; }
         public BulgarianArmoredInfantry()
         {
             Attack = 6;

@@ -25,8 +25,8 @@ foreach(var troop in bulgaria.Army)
 var eraBuffs = new EraBuffStorage();
 
 eraBuffs.AddBuff(new NationGoldPercentageBuff(30));
-eraBuffs.AddBuff(new TroopSingleStatPercentageBuff(50, "Attack"));
-eraBuffs.AddBuff(new TroopAllStatsPercantageBuff(100));
+eraBuffs.AddBuff(new TroopSingleStatPercentageBuff(25, "Attack"));
+eraBuffs.AddBuff(new TroopAllStatsPercantageBuff(10));
 
 eraBuffs.ApplyTroopBuffs(bulgaria.Army);
 
