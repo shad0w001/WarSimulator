@@ -8,7 +8,7 @@ using WarSimulator.Troops.BaseInterfaces;
 
 namespace WarSimulator.Buffs.BaseBuffTypes
 {
-    public interface IBuffStorage
+    public interface IBuffManager
     {
         public List<IBuff> _buffs { get; set; }
         public void AddBuff(IBuff buff);

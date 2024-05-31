@@ -18,7 +18,7 @@ namespace WarSimulator.Buffs.BuffImplementations
         }
         public void ApplyBuff(INation nation)
         {
-            nation.Gold += nation.Gold * _goldBuffPercentage / 100;
+            nation.Gold += nation.Gold * (_goldBuffPercentage / 100);
         }
     }
 }

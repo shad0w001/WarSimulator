@@ -26,7 +26,7 @@ namespace WarSimulator.Buffs.BuffImplementations
                 if (property.PropertyType == typeof(double))
                 {
                     var oldValue = (double)property.GetValue(troop);
-                    var newValue = (double)(oldValue + oldValue * _statsPercentageBuff / 100);
+                    var newValue = (double)(oldValue + (oldValue * _statsPercentageBuff / 100));
                     property.SetValue(troop, newValue);
                 }
             }

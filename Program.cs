@@ -10,8 +10,8 @@ using WarSimulator.Troops.TroopTypes;
 var bulgaria = new Bulgaria();
 var bulgarianFactory = new BulgarianTroopFactory();
 
-var light = bulgarianFactory.CreateLightInfantry();
-var gun = bulgarianFactory.CreateGunslinger();
+var light = bulgarianFactory.CreateTroop("LightInfantry");
+var gun = bulgarianFactory.CreateTroop("Gunslinger");
 
 bulgaria.Army.Add(light);
 bulgaria.Army.Add(gun);

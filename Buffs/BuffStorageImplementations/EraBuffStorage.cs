@@ -9,7 +9,7 @@ using WarSimulator.Troops.BaseInterfaces;
 
 namespace WarSimulator.Buffs.BuffStorageImplementations
 {
-    public class EraBuffStorage : IEraBuffStorage
+    public class EraBuffStorage : IEraBuffManager
     {
         public List<IBuff> _buffs { get; set; }
         public EraBuffStorage()
@@ -30,7 +30,7 @@ namespace WarSimulator.Buffs.BuffStorageImplementations
                 {
                     if (buff is INationBuff)
                     {
-                        (buff as INationBuff).ApplyBuff(nation);
+                        ((INationBuff)buff).ApplyBuff(nation);
                     }
                 }
             }

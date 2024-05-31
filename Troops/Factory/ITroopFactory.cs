@@ -5,20 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using WarSimulator.Nations;
 using WarSimulator.Troops.BaseInterfaces;
+using WarSimulator.Troops.Factory.FactoryUnitImp;
 using WarSimulator.Troops.TroopTypes;
 
 namespace WarSimulator.Troops.Factory
 {
     public interface ITroopFactory
     {
-        public ILightInfantry CreateLightInfantry();
-        public IArmoredInfantry CreateArmoredInfantry();
-        public IHeavyInfantry CreateHeavyInfantry();
-        public IScout RectruitScout();
-        public IKnight CreateKnight();
-        public IHeavyCavalry CreateHeavyCavalry();
-        public ISpearman CreateSpearman();
-        public IArcher CreateArcher();
-        public IGunslinger CreateGunslinger();
+        public List<IFactoryUnit> _factoryUnits { get; set; }
+        public ITroop CreateTroop(string name);
+        public void UnlockTroop(string name);
     }
 }
