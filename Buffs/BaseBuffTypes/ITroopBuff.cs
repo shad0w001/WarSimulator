@@ -9,6 +9,7 @@ namespace WarSimulator.Buffs.BaseBuffTypes
 {
     public interface ITroopBuff : IBuff
     {
+        public Type _troopType { get; set; }
         public void ApplyBuff(ITroop troop);
     }
 }

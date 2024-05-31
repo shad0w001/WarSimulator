@@ -13,7 +13,7 @@ namespace WarSimulator.Buffs.BaseBuffTypes
         public List<IBuff> _buffs { get; set; }
         public void AddBuff(IBuff buff);
         public void RemoveBuff(IBuff buff);
-        public void ApplyNationBuffs(IEnumerable<INation> nations);
+        public void ApplyNationBuffs(INation nation);
         public void ApplyTroopBuffs(IEnumerable<ITroop> army);
     }
 }

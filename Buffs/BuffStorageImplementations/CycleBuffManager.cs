@@ -9,10 +9,10 @@ using WarSimulator.Troops.BaseInterfaces;
 
 namespace WarSimulator.Buffs.BuffStorageImplementations
 {
-    public class EraBuffStorage : IEraBuffManager
+    public class CycleBuffManager : ICycleBuffManager
     {
         public List<IBuff> _buffs { get; set; }
-        public EraBuffStorage()
+        public CycleBuffManager()
         {
             _buffs = new List<IBuff>();
         }
@@ -22,30 +22,21 @@ namespace WarSimulator.Buffs.BuffStorageImplementations
             _buffs.Add(buff);
         }
 
-        public void ApplyNationBuffs(IEnumerable<INation> nations)
+        public void ApplyNationBuffs(INation nation)
         {
-            foreach (var nation in nations)
+            foreach (var buff in _buffs.OfType<INationBuff>())
             {
-                foreach (var buff in _buffs)
-                {
-                    if (buff is INationBuff)
-                    {
-                        ((INationBuff)buff).ApplyBuff(nation);
-                    }
-                }
+                buff.ApplyBuff(nation);
             }
         }
 
         public void ApplyTroopBuffs(IEnumerable<ITroop> army)
         {
-            foreach (var troop in army)
+            foreach (var buff in _buffs.OfType<ITroopBuff>())
             {
-                foreach (var buff in _buffs)
+                foreach (var troop in army.Where(troop => troop.GetType() == buff._troopType))
                 {
-                    if (buff is ITroopBuff)
-                    {
-                        (buff as ITroopBuff).ApplyBuff(troop);
-                    }
+                    buff.ApplyBuff(troop);
                 }
             }
         }

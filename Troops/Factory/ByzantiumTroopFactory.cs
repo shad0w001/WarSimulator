@@ -17,18 +17,19 @@ namespace WarSimulator.Troops.Factory
 
         public ByzantiumTroopFactory()
         {
-            _factoryUnits = new List<IFactoryUnit>();
-
-            _factoryUnits.Add(new FactoryUnit("Archer", () => new ByzantiumArcher(), true));
-            _factoryUnits.Add(new FactoryUnit("ArmoredInfantry", () => new ByzantiumArmoredInfantry(), true));
-            _factoryUnits.Add(new FactoryUnit("Gunslinger", () => new ByzantiumGunslinger(), true));
-            _factoryUnits.Add(new FactoryUnit("HeavyCavalry", () => new ByzantiumHeavyCavalry(), true));
-            _factoryUnits.Add(new FactoryUnit("HeavyInfantry", () => new ByzantiumHeavyInfantry(), true));
-            _factoryUnits.Add(new FactoryUnit("Knight", () => new ByzantiumKnight(), true));
-            _factoryUnits.Add(new FactoryUnit("LightInfantry", () => new ByzantiumLightInfantry(), true));
-            _factoryUnits.Add(new FactoryUnit("Scout", () => new ByzantiumScout(), true));
-            _factoryUnits.Add(new FactoryUnit("Spearman", () => new ByzantiumSpearman(), true));
-            _factoryUnits.Add(new FactoryUnit("Cataphract", () => new ByzantiumCataphract(), false));
+            _factoryUnits =
+            [
+                new FactoryUnit("Archer", () => new ByzantiumArcher(), true),
+                new FactoryUnit("ArmoredInfantry", () => new ByzantiumArmoredInfantry(), true),
+                new FactoryUnit("Gunslinger", () => new ByzantiumGunslinger(), true),
+                new FactoryUnit("HeavyCavalry", () => new ByzantiumHeavyCavalry(), true),
+                new FactoryUnit("HeavyInfantry", () => new ByzantiumHeavyInfantry(), true),
+                new FactoryUnit("Knight", () => new ByzantiumKnight(), true),
+                new FactoryUnit("LightInfantry", () => new ByzantiumLightInfantry(), true),
+                new FactoryUnit("Scout", () => new ByzantiumScout(), true),
+                new FactoryUnit("Spearman", () => new ByzantiumSpearman(), true),
+                new FactoryUnit("Cataphract", () => new ByzantiumCataphract(), false),
+            ];
         }
 
         public ITroop CreateTroop(string name)

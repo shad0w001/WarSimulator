@@ -11,14 +11,21 @@ namespace WarSimulator.Buffs.BuffImplementations
     public class NationGoldPercentageBuff : INationBuff
     {
         private int _goldBuffPercentage {  get; set; }
+        public Type _nationType { get; set; }
 
-        public NationGoldPercentageBuff(int goldBuffPercentage)
+        public NationGoldPercentageBuff(int goldBuffPercentage, Type type)
         {
+            _nationType = type;
              _goldBuffPercentage = goldBuffPercentage;
         }
         public void ApplyBuff(INation nation)
         {
-            nation.Gold += nation.Gold * (_goldBuffPercentage / 100);
+            if(nation.GetType() != _nationType)
+            {
+                return;
+            }
+            double increaseAmount = nation.Gold * (_goldBuffPercentage / 100.0);
+            nation.Gold = (int)(nation.Gold + increaseAmount);
         }
     }
 }

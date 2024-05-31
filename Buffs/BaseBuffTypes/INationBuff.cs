@@ -9,6 +9,7 @@ namespace WarSimulator.Buffs.BaseBuffTypes
 {
     public interface INationBuff : IBuff
     {
+        public Type _nationType { get; set; }
         public void ApplyBuff(INation nation);
     }
 }

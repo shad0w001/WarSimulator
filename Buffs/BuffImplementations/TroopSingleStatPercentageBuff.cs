@@ -12,16 +12,24 @@ namespace WarSimulator.Buffs.BuffImplementations
     public class TroopSingleStatPercentageBuff : ITroopBuff
     {
         public int _statsPercentageBuff { get; set; }
+        public Type _troopType { get; set; }
         public string _stat {  get; set; }
-        public TroopSingleStatPercentageBuff(int statsPercentageBuff, string stat)
+        public TroopSingleStatPercentageBuff(int statsPercentageBuff, string stat, Type troopType)
         {
             _statsPercentageBuff = statsPercentageBuff;
             _stat = stat;
+            _troopType = troopType;
         }
 
         public void ApplyBuff(ITroop troop)
         {
-            PropertyInfo[] troopProperties = troop.GetType().GetProperties();
+            var troopType = troop.GetType();
+            if (troopType != _troopType)
+            {
+                return;
+            }
+
+            PropertyInfo[] troopProperties = troopType.GetProperties();
 
             foreach (var property in troopProperties)
             {
