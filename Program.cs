@@ -8,11 +8,10 @@ using WarSimulator.Troops.Factory;
 using WarSimulator.Troops.TroopTypes;
 
 var bulgaria = new Bulgaria();
-var bulgarianFactory = new BulgarianTroopFactory();
 
-var light = bulgarianFactory.CreateTroop("LightInfantry");
-var light2 = bulgarianFactory.CreateTroop("LightInfantry");
-var gun = bulgarianFactory.CreateTroop("Gunslinger");
+var light = bulgaria._rectruitmentCenter.CreateTroop("LightInfantry");
+var light2 = bulgaria._rectruitmentCenter.CreateTroop("LightInfantry");
+var gun = bulgaria._rectruitmentCenter.CreateTroop("Gunslinger");
 
 bulgaria.Army.Add(light);
 bulgaria.Army.Add(light2);
@@ -21,7 +20,7 @@ bulgaria.Army.Add(gun);
 Console.WriteLine(bulgaria.Gold);
 foreach(var troop in bulgaria.Army)
 {
-    Console.WriteLine($"{troop.GetType().Name}: Attack: {troop.Attack}");
+    Console.WriteLine($"{troop.GetType().Name}: Attack:  {troop.Attack}");
 }
 
 var eraBuffs = new EraBuffManager();
@@ -48,7 +47,7 @@ foreach (var troop in bulgaria.Army)
 cycleBuffs.ApplyTroopBuffs(bulgaria.Army);
 cycleBuffs.ApplyNationBuffs(bulgaria);
 
-Console.WriteLine($"\nAfter changes \n");
+Console.WriteLine($"\nAfter cycle buffs \n");
 Console.WriteLine(bulgaria.Gold);
 foreach (var troop in bulgaria.Army)
 {

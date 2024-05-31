@@ -13,11 +13,16 @@ namespace WarSimulator.Troops.Factory.FactoryUnitImp
         public Func<ITroop> CreationFunction { get; set; }
         public bool IsUnlocked { get; set; }
 
-        public FactoryUnit(string name, Func<ITroop> function, bool isUnlocked)
+        private FactoryUnit(string name, Func<ITroop> function, bool isUnlocked)
         {
             Name = name;
             CreationFunction = function;
             IsUnlocked = isUnlocked;
+        }
+
+        public static FactoryUnit CreateUnit(string name, Func<ITroop> function, bool isUnlocked)
+        {
+            return new FactoryUnit(name, function, isUnlocked);
         }
 
         public ITroop CreateInstance()

@@ -12,6 +12,6 @@ namespace WarSimulator.Troops.BaseInterfaces
         public double Defence { get; set; }
         public double Speed { get; set; }
         public double Life { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
     }
 }

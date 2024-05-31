@@ -19,16 +19,16 @@ namespace WarSimulator.Troops.Factory
         {
             _factoryUnits =
             [
-                new FactoryUnit("Archer", () => new ByzantiumArcher(), true),
-                new FactoryUnit("ArmoredInfantry", () => new ByzantiumArmoredInfantry(), true),
-                new FactoryUnit("Gunslinger", () => new ByzantiumGunslinger(), true),
-                new FactoryUnit("HeavyCavalry", () => new ByzantiumHeavyCavalry(), true),
-                new FactoryUnit("HeavyInfantry", () => new ByzantiumHeavyInfantry(), true),
-                new FactoryUnit("Knight", () => new ByzantiumKnight(), true),
-                new FactoryUnit("LightInfantry", () => new ByzantiumLightInfantry(), true),
-                new FactoryUnit("Scout", () => new ByzantiumScout(), true),
-                new FactoryUnit("Spearman", () => new ByzantiumSpearman(), true),
-                new FactoryUnit("Cataphract", () => new ByzantiumCataphract(), false),
+                FactoryUnit.CreateUnit("Archer", () => new ByzantiumArcher(), true),
+                FactoryUnit.CreateUnit("ArmoredInfantry", () => new ByzantiumArmoredInfantry(), true),
+                FactoryUnit.CreateUnit("Gunslinger", () => new ByzantiumGunslinger(), true),
+                FactoryUnit.CreateUnit("HeavyCavalry", () => new ByzantiumHeavyCavalry(), true),
+                FactoryUnit.CreateUnit("HeavyInfantry", () => new ByzantiumHeavyInfantry(), true),
+                FactoryUnit.CreateUnit("Knight", () => new ByzantiumKnight(), true),
+                FactoryUnit.CreateUnit("LightInfantry", () => new ByzantiumLightInfantry(), true),
+                FactoryUnit.CreateUnit("Scout", () => new ByzantiumScout(), true),
+                FactoryUnit.CreateUnit("Spearman", () => new ByzantiumSpearman(), true),
+                FactoryUnit.CreateUnit("Cataphract", () => new ByzantiumCataphract(), false),
             ];
         }
 

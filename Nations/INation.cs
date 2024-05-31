@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarSimulator.Troops.BaseInterfaces;
+using WarSimulator.Troops.Factory;
 
 namespace WarSimulator.Nations
 {
@@ -12,5 +13,6 @@ namespace WarSimulator.Nations
         public string Name { get; set; }
         public int Gold { get; set; }
         public List<ITroop> Army { get; set; }
+        public ITroopFactory _rectruitmentCenter {  get; set; }
     }
 }

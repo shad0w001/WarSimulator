@@ -19,15 +19,15 @@ namespace WarSimulator.Troops.Factory
         {
             _factoryUnits =
             [
-                new FactoryUnit("Archer", () => new BulgarianArcher(), true),
-                new FactoryUnit("ArmoredInfantry", () => new BulgarianArmoredInfantry(), true),
-                new FactoryUnit("Gunslinger", () => new BulgarianGunslinger(), true),
-                new FactoryUnit("HeavyCavalry", () => new BulgarianHeavyCavalry(), true),
-                new FactoryUnit("HeavyInfantry", () => new BulgarianHeavyInfantry(), true),
-                new FactoryUnit("Knight", () => new BulgarianKnight(), true),
-                new FactoryUnit("LightInfantry", () => new BulgarianLightInfantry(), true),
-                new FactoryUnit("Scout", () => new BulgarianScout(), true),
-                new FactoryUnit("Spearman", () => new BulgarianSpearman(), true),
+                FactoryUnit.CreateUnit("Archer", () => new BulgarianArcher(), true),
+                FactoryUnit.CreateUnit("ArmoredInfantry", () => new BulgarianArmoredInfantry(), true),
+                FactoryUnit.CreateUnit("Gunslinger", () => new BulgarianGunslinger(), true),
+                FactoryUnit.CreateUnit("HeavyCavalry", () => new BulgarianHeavyCavalry(), true),
+                FactoryUnit.CreateUnit("HeavyInfantry", () => new BulgarianHeavyInfantry(), true),
+                FactoryUnit.CreateUnit("Knight", () => new BulgarianKnight(), true),
+                FactoryUnit.CreateUnit("LightInfantry", () => new BulgarianLightInfantry(), true),
+                FactoryUnit.CreateUnit("Scout", () => new BulgarianScout(), true),
+                FactoryUnit.CreateUnit("Spearman", () => new BulgarianSpearman(), true),
             ];
         }
 

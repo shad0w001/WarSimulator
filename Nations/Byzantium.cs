@@ -8,19 +8,19 @@ using WarSimulator.Troops.Factory;
 
 namespace WarSimulator.Nations
 {
-    public class Bulgaria : INation
+    public class Byzantium : INation
     {
         public string Name { get; set; }
         public int Gold { get; set; }
         public List<ITroop> Army { get; set; }
         public ITroopFactory _rectruitmentCenter { get; set; }
 
-        public Bulgaria()
+        public Byzantium()
         {
-            Name = "Bulgaria";
+            Name = "Byzantium";
             Gold = 10000;
             Army = new List<ITroop>();
-            _rectruitmentCenter = new BulgarianTroopFactory();
+            _rectruitmentCenter = new ByzantiumTroopFactory();
         }
     }
 }
