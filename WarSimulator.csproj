@@ -7,4 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Battles\" />
+    <Folder Include="Engine\" />
+    <Folder Include="Commands\" />
+    <Folder Include="BattleLogs\" />
+    <Folder Include="Timespan\Eras\" />
+    <Folder Include="Timespan\Cycles\" />
+  </ItemGroup>
+
 </Project>

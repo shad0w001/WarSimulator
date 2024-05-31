@@ -14,6 +14,7 @@ namespace WarSimulator.Troops.Factory
     {
         public List<IFactoryUnit> _factoryUnits { get; set; }
         public ITroop CreateTroop(string name);
+        public List<ITroop> CreateMultipleTroops(string name, int count);
         public void UnlockTroop(string name);
     }
 }

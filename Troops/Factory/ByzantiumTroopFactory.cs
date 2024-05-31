@@ -51,6 +51,31 @@ namespace WarSimulator.Troops.Factory
             return unit.CreateInstance();
         }
 
+        public List<ITroop> CreateMultipleTroops(string name, int count)
+        {
+            var troops = new List<ITroop>();
+            var unit = _factoryUnits.FirstOrDefault(x => x.Name == name);
+
+            if (unit is null)
+            {
+                Console.WriteLine("Creation: Troop not found");
+                return null;
+            }
+
+            if (!unit.IsUnlocked)
+            {
+                Console.WriteLine("Creation: Troop is locked");
+                return null;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                troops.Add(unit.CreateInstance());
+            }
+
+            return troops;
+        }
+
         public void UnlockTroop(string name)
         {
             var unit = _factoryUnits.FirstOrDefault(x => x.Name == name);
