@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WarSimulator.Commands;
 using WarSimulator.Nations;
 using WarSimulator.Shop.ShoppingCartImp;
 
@@ -12,6 +13,10 @@ namespace WarSimulator.Shop.Strategy
 {
     public class ManualTroopShopStrategy : ITroopShopStrategy
     {
+        public static ManualTroopShopStrategy CreateStrategy()
+        {
+            return new ManualTroopShopStrategy();
+        }
         public IShoppingCart Execute(INation nation, Dictionary<string, int> prices)
         {
             var cart = new ShoppingCart();
@@ -30,14 +35,11 @@ namespace WarSimulator.Shop.Strategy
             Console.WriteLine("/cart confirm - confirm your purchases");
 
             //to be implemented when i figure out commands
-
-            var item1 = new ShoppingCartItem
+            while (cart.IsShopping)
             {
-                Name = "Knight",
-                Amount = "190"
-            };
-
-            cart.AddItemsToCart(item1);
+                var userInput = Console.ReadLine();
+                CommandManager.GetInstance().ExecuteShopCommand(userInput, cart);
+            }
 
             return cart;
         }

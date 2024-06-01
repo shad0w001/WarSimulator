@@ -8,6 +8,7 @@ namespace WarSimulator.Shop.ShoppingCartImp
 {
     public interface IShoppingCart
     {
+        public bool IsShopping { get; set; }
         public List<IShoppingCartItem> Items { get; set; }
         public void AddItemsToCart(IShoppingCartItem item);
         public void RemoveItemsFromCart(string name);

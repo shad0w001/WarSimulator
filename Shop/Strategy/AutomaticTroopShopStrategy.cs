@@ -13,10 +13,14 @@ namespace WarSimulator.Shop.Strategy
 {
     public class AutomaticTroopShopStrategy : ITroopShopStrategy
     {
+        public static AutomaticTroopShopStrategy CreateStrategy()
+        {
+            return new AutomaticTroopShopStrategy();
+        }
         private int numberOfStrategies { get; set; }
         private Random random { get; set; }
 
-        public AutomaticTroopShopStrategy()
+        private AutomaticTroopShopStrategy()
         {
             numberOfStrategies = 10;
             random = new Random();
@@ -76,17 +80,18 @@ namespace WarSimulator.Shop.Strategy
                 Dictionary<string, int> strategy = new Dictionary<string, int>();
                 int remainingGold = gold;
 
-                bool spendFullGold = (random.NextDouble() <= 0.5); // 50% chance to spend 100%, 50% to spend 90%
+                bool spendHalfGold = (random.NextDouble() <= 0.5); // 50% chance to spend 100%, 50% to spend 90%
                 
                 int targetGold;
-                if (spendFullGold)
+                if (spendHalfGold)
                 {
-                    targetGold = (int)(gold * 0.9);
+                    targetGold = (int)(gold * 0.5);
                 }
                 else
                 {
-                    targetGold = (int)(gold * 0.7);
+                    targetGold = (int)(gold * 0.35);
                 }
+                int _gold = targetGold;
 
 
                 while (remainingGold >= 10)
@@ -107,7 +112,7 @@ namespace WarSimulator.Shop.Strategy
                         remainingGold -= unitCost;
                     }
                 }
-                remainingGold = gold;
+                remainingGold = _gold;
                 strategies.Add(strategy);
             }
 

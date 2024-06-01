@@ -13,7 +13,7 @@ namespace WarSimulator.Timespan.Eras
     public class Era
     {
         private IEraBuffManager _buffManager {  get; set; }
-        private List<Cycle> _cycles {  get; set; }
+        public List<Cycle> _cycles {  get; set; }
         private Era()
         {
             _buffManager = new EraBuffManager();

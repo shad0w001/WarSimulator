@@ -8,9 +8,11 @@ namespace WarSimulator.Shop.ShoppingCartImp
 {
     public class ShoppingCart : IShoppingCart
     {
+        public bool IsShopping { get; set; }
         public List<IShoppingCartItem> Items { get; set; }
         public ShoppingCart()
         {
+            IsShopping = true;
             Items = new List<IShoppingCartItem>();
         }
 
