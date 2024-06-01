@@ -15,5 +15,6 @@ namespace WarSimulator.Buffs.BaseBuffTypes
         public void RemoveBuff(IBuff buff);
         public void ApplyNationBuffs(INation nation);
         public void ApplyTroopBuffs(IEnumerable<ITroop> army);
+        public void ClearAllBuffs();
     }
 }

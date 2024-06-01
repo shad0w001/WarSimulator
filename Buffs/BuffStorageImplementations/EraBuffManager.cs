@@ -45,5 +45,10 @@ namespace WarSimulator.Buffs.BuffStorageImplementations
         {
             _buffs?.Remove(buff);
         }
+
+        public void ClearAllBuffs()
+        {
+            _buffs?.Clear();
+        }
     }
 }

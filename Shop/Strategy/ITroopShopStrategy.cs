@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WarSimulator.Nations;
+using WarSimulator.Shop.ShoppingCartImp;
 
 namespace WarSimulator.Shop.Strategy
 {
     public interface ITroopShopStrategy
     {
-        public void Execute(INation nation, Dictionary<string, int> prices);
+        public IShoppingCart Execute(INation nation, Dictionary<string, int> prices);
     }
 }

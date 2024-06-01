@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using WarSimulator.Battles;
 using WarSimulator.Buffs.BuffImplementations;
 using WarSimulator.Buffs.BuffStorageImplementations;
 using WarSimulator.Nations;
@@ -10,9 +11,14 @@ using WarSimulator.Troops.Factory;
 using WarSimulator.Troops.TroopTypes;
 
 var bulgaria = new Bulgaria();
+var byzantium = new Byzantium();
 
-var shopManager = new TroopShopManager(new ManualTroopShopStrategy());
-shopManager.ExecuteShoppingStrategy(bulgaria);
+var shopManager = new TroopShopManager();
+shopManager.ExecuteShoppingStrategy(bulgaria, new ManualTroopShopStrategy());
+shopManager.ExecuteShoppingStrategy(byzantium, new ManualTroopShopStrategy());
+
+var battleManager = new BattleManager();
+battleManager.ExecuteBattleCycle(bulgaria, byzantium);
 //var byzantium = new Byzantium();
 
 //bulgaria._rectruitmentCenter.CreateMultipleTroops("LightInfantry", 2).ForEach(light => bulgaria.Army.Add(light));

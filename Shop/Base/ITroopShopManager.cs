@@ -10,7 +10,6 @@ namespace WarSimulator.Shop.Base
 {
     public interface ITroopShopManager
     {
-        public ITroopShopStrategy _buyingStrategy { get; set; }
-        public void ExecuteShoppingStrategy(INation nation);
+        public void ExecuteShoppingStrategy(INation nation, ITroopShopStrategy strategy);
     }
 }
