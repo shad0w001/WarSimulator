@@ -88,11 +88,13 @@ namespace WarSimulator.Battles
         }
         private int GetAttackChances(List<ITroop> activeArmy)
         {
+            int maxAttacks = activeArmy.Count;
+
             int baseAttacks = (int)(activeArmy.Count * 0.60);
-            double randomFactor = random.NextDouble() * 0.8 + 0.6;
+            double randomFactor = random.NextDouble() * 0.8 + 1.0;
             int numberOfAttacks = (int)(baseAttacks * randomFactor);
 
-            numberOfAttacks = Math.Max(1, Math.Min(numberOfAttacks, baseAttacks));
+            numberOfAttacks = Math.Min(numberOfAttacks, maxAttacks);
 
             return numberOfAttacks;
         }

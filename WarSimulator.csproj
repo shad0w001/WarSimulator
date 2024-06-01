@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Engine\" />
     <Folder Include="Commands\" />
     <Folder Include="BattleLogs\" />
+    <Folder Include="Engine\SetupSchema\" />
   </ItemGroup>
 
 </Project>

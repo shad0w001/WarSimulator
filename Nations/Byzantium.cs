@@ -10,15 +10,13 @@ namespace WarSimulator.Nations
 {
     public class Byzantium : INation
     {
-        public string Name { get; set; }
         public int Gold { get; set; }
         public List<ITroop> Army { get; set; }
         public ITroopFactory _rectruitmentCenter { get; set; }
 
         public Byzantium()
         {
-            Name = "Byzantium";
-            Gold = 10000;
+            Gold = 0;
             Army = new List<ITroop>();
             _rectruitmentCenter = new ByzantiumTroopFactory();
         }

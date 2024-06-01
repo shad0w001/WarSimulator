@@ -33,8 +33,8 @@ namespace WarSimulator.Shop.Strategy
 
             var item1 = new ShoppingCartItem
             {
-                Name = "Archer",
-                Amount = "10"
+                Name = "Knight",
+                Amount = "190"
             };
 
             cart.AddItemsToCart(item1);
