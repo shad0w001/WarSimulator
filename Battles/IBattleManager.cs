@@ -11,5 +11,6 @@ namespace WarSimulator.Battles
     public interface IBattleManager
     {
         public void ExecuteBattleCycle(INation nationOne, INation nationTwo);
+        public bool CheckIfNationsHaveArmies(List<INation> nations);
     }
 }

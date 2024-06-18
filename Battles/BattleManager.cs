@@ -13,7 +13,7 @@ namespace WarSimulator.Battles
         private Random random = new Random();
         public void ExecuteBattleCycle(INation nationOne, INation nationTwo)
         {
-            if(random.NextDouble() > 0.8)
+            if (random.NextDouble() > 0.8)
             {
                 Console.WriteLine("No battle this cycle");
                 return;
@@ -40,6 +40,18 @@ namespace WarSimulator.Battles
                 nationOneActiveTroops);
 
         }
+        public bool CheckIfNationsHaveArmies(List<INation> nations)
+        {
+            foreach( var nation in nations)
+            {
+                if(nation.Army.Count == 0)
+                {
+                    Console.WriteLine($"{nation.GetType().Name} has no standing army");
+                    return false;
+                }
+            }
+            return true;
+        }
         private void Attack(ITroop attacker, ITroop defender)
         {
             bool isRanged = attacker is IAccuracy;
@@ -54,7 +66,7 @@ namespace WarSimulator.Battles
 
             if (!attackHits)
             {
-                Console.WriteLine("Attacked missed");
+                Console.WriteLine("Attacker missed");
                 return;
             }
 
@@ -74,6 +86,12 @@ namespace WarSimulator.Battles
         private List<ITroop> GetRandomTroops(INation nation)
         {
             var troops = nation.Army;
+
+            //if they are less then 10 troops, return all troops
+            if(nation.Army.Count < 10)
+            {
+                return nation.Army;
+            }
 
             //90% of troops
             int lowestAmountOfTroopsInBattle = (int)(troops.Count * 0.9);
@@ -100,7 +118,19 @@ namespace WarSimulator.Battles
         }
         private ITroop PickRandomTroop(List<ITroop> activeTroopsList)
         {
+            if(activeTroopsList.Count == 0)
+            {
+                return null;
+            }
+
             int randomIndex = random.Next(activeTroopsList.Count);
+            var troop = activeTroopsList[randomIndex];
+
+            if(troop is null)
+            {
+                return null;
+            }
+
             return activeTroopsList[randomIndex];
         }
         private void PerformAttacks(
@@ -114,6 +144,11 @@ namespace WarSimulator.Battles
             {
                 var attacker = PickRandomTroop(attackingNationTroops);
                 var defender = PickRandomTroop(defendingNationTroops);
+
+                if(!CheckIfNationsHaveArmies([attackingNation, defendingNation]))
+                {
+                    return;
+                }
 
                 Attack(attacker, defender);
 

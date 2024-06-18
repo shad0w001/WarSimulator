@@ -21,6 +21,7 @@ namespace WarSimulator.Engine
         public IBattleManager _battleManager { get; set; }
         public ISetupSchema _schema { get; set; }
         public CommandManager _commandManager { get; set; }
+        private bool IsPlaying { get; set; }
 
         private GameEngine()
         {
@@ -28,6 +29,7 @@ namespace WarSimulator.Engine
             _shopManager = new TroopShopManager();
             _battleManager = new BattleManager();
             _commandManager = CommandManager.GetInstance();
+            IsPlaying = true;
         }
 
         public static GameEngine GetInstance()
@@ -54,29 +56,48 @@ namespace WarSimulator.Engine
             List<INation> nations = [bulgaria, byzantium];
             var eras = _schema.SetupSchema();
 
-            for (int i = 0; i < eras.Count; i++)
+            while (IsPlaying)
             {
-                Era? era = eras[i];
-                era.ApplyBuffs(nations);
-
-                _shopManager.ExecuteShoppingStrategy(bulgaria, ManualTroopShopStrategy.CreateStrategy());
-                _shopManager.ExecuteShoppingStrategy(byzantium, AutomaticTroopShopStrategy.CreateStrategy());
-
-                Console.WriteLine($"Era {i + 1}");
-
-                for (int j = 0; j < era._cycles.Count; j++)
+                for (int i = 0; i < eras.Count; i++)
                 {
-                    Cycle cycle = era._cycles[j];
-                    Console.WriteLine($"Cycle {j + 1}");
-                    cycle.ApplyBuffs(nations);
+                    if (!IsPlaying)
+                    {
+                        break;
+                    }
 
-                    _battleManager.ExecuteBattleCycle(bulgaria, byzantium);
+                    Era? era = eras[i];
+                    era.ApplyBuffs(nations);
 
-                    userInput = Console.ReadLine();
-                    _commandManager.ExecuteGameCommand(userInput);
+                    _shopManager.ExecuteShoppingStrategy(bulgaria, ManualTroopShopStrategy.CreateStrategy());
+                    _shopManager.ExecuteShoppingStrategy(byzantium, AutomaticTroopShopStrategy.CreateStrategy());
+
+                    Console.WriteLine($"Era {i + 1}");
+
+                    for (int j = 0; j < era._cycles.Count; j++)
+                    {
+                        Cycle cycle = era._cycles[j];
+                        Console.WriteLine($"Cycle {j + 1}");
+                        cycle.ApplyBuffs(nations);
+
+                        if (!_battleManager.CheckIfNationsHaveArmies(nations))
+                        {
+                            Stop();
+                            break;
+                        }
+
+                        _battleManager.ExecuteBattleCycle(bulgaria, byzantium);
+
+                        userInput = Console.ReadLine();
+                        //_commandManager.ExecuteGameCommand(userInput);
+                    }
                 }
             }
 
+
+        }
+        private void Stop()
+        {
+            IsPlaying = false;
         }
     }
 }
