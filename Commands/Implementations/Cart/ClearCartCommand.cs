@@ -13,7 +13,7 @@ namespace WarSimulator.Commands.Implementations.Cart
         private IShoppingCart _cart;
         public ClearCartCommand(IShoppingCart cart)
         {
-            _cart = new ShoppingCart();
+            _cart = cart;
         }
         public void Execute()
         {

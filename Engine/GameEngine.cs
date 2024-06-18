@@ -57,11 +57,12 @@ namespace WarSimulator.Engine
             for (int i = 0; i < eras.Count; i++)
             {
                 Era? era = eras[i];
-                Console.WriteLine($"Era {i + 1}");
                 era.ApplyBuffs(nations);
 
                 _shopManager.ExecuteShoppingStrategy(bulgaria, ManualTroopShopStrategy.CreateStrategy());
                 _shopManager.ExecuteShoppingStrategy(byzantium, AutomaticTroopShopStrategy.CreateStrategy());
+
+                Console.WriteLine($"Era {i + 1}");
 
                 for (int j = 0; j < era._cycles.Count; j++)
                 {
@@ -70,6 +71,9 @@ namespace WarSimulator.Engine
                     cycle.ApplyBuffs(nations);
 
                     _battleManager.ExecuteBattleCycle(bulgaria, byzantium);
+
+                    userInput = Console.ReadLine();
+                    _commandManager.ExecuteGameCommand(userInput);
                 }
             }
 
