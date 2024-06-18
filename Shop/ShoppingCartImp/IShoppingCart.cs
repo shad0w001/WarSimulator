@@ -12,6 +12,7 @@ namespace WarSimulator.Shop.ShoppingCartImp
         public List<IShoppingCartItem> Items { get; set; }
         public void AddItemsToCart(IShoppingCartItem item);
         public void RemoveItemsFromCart(string name);
+        public void RemoveLastItemFromCart();
         public void ClearCart();
     }
 }

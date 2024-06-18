@@ -26,7 +26,7 @@ namespace WarSimulator.Shop.Base
 
         private Dictionary<string, int> GetTroopPrices(INation nation)
         {
-            var dictionary = new Dictionary<string, int>();
+            var dictionary = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
             foreach (FactoryUnit unit in nation._rectruitmentCenter._factoryUnits)
             {

@@ -43,7 +43,7 @@ namespace WarSimulator.Engine
         {
             Console.WriteLine("Welcome to the War Simulator!");
             Console.WriteLine("To start the game type /game start");
-            Console.WriteLine("To exit write /exit");
+            Console.WriteLine("To exit write /game exit");
 
             var userInput = Console.ReadLine();
             _commandManager.ExecuteGameCommand(userInput);

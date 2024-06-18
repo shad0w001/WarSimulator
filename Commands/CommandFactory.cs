@@ -21,7 +21,7 @@ namespace WarSimulator.Commands
             _gameCommands = new Dictionary<string, Func<ICommand>>
             {
                 { "/game start", () => new GameStartCommand() },
-                { "/exit", () => new GameExitCommand() },
+                { "/game exit", () => new GameExitCommand() },
             };
 
             _cartCommands = new Dictionary<string, Func<IShoppingCart, string[], ICommand>>

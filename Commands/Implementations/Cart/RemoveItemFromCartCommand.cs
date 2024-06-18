@@ -27,7 +27,6 @@ namespace WarSimulator.Commands.Implementations.Cart
                 Amount = _amount
             };
             _cart.RemoveItemsFromCart(_name);
-            Console.WriteLine($"Removed {_amount} {_name} from the cart.");
         }
     }
 }

@@ -28,7 +28,11 @@ namespace WarSimulator.Shop.ShoppingCartImp
 
         public void RemoveItemsFromCart(string name)
         {
-            Items.Remove(Items.Where(item => item.Name == name).FirstOrDefault());
+            Items.Remove(Items.Where(item => item.Name.ToLower() == name.ToLower()).FirstOrDefault());
+        }
+        public void RemoveLastItemFromCart()
+        {
+            Items.Remove(Items.LastOrDefault());
         }
     }
 }

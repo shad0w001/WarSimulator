@@ -27,7 +27,6 @@ namespace WarSimulator.Commands.Implementations.Cart
                 Amount = _amount
             };
             _cart.AddItemsToCart(item);
-            Console.WriteLine($"Bought {_amount} {_name}.");
         }
     }
 }

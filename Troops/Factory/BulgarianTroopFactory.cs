@@ -33,7 +33,7 @@ namespace WarSimulator.Troops.Factory
 
         public ITroop CreateTroop(string name)
         {
-            var unit = _factoryUnits.FirstOrDefault(x => x.Name == name);
+            var unit = _factoryUnits.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
             if (unit is null)
             {
@@ -53,7 +53,7 @@ namespace WarSimulator.Troops.Factory
         public List<ITroop> CreateMultipleTroops(string name, int count)
         {
             var troops = new List<ITroop>();
-            var unit = _factoryUnits.FirstOrDefault(x => x.Name == name);
+            var unit = _factoryUnits.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
 
             if (unit is null)
             {
@@ -77,7 +77,7 @@ namespace WarSimulator.Troops.Factory
 
         public void UnlockTroop(string name)
         {
-            var unit = _factoryUnits.FirstOrDefault(x => x.Name == name);
+            var unit = _factoryUnits.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
             if (unit is null)
             {
                 Console.WriteLine("Unlock: Troop not found");
