@@ -1,4 +1,3 @@
 ﻿using WarSimulator.Engine;
 
-var engine = GameEngine.GetInstance();
-engine.Run();
+GameEngine.GetInstance().Run();

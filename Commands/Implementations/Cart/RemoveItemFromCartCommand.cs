@@ -26,7 +26,7 @@ namespace WarSimulator.Commands.Implementations.Cart
                 Name = _name,
                 Amount = _amount
             };
-            _cart.RemoveItemsFromCart(_name);
+            _cart.RemoveItemsFromCart(item);
         }
     }
 }

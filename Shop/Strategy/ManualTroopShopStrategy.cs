@@ -22,9 +22,7 @@ namespace WarSimulator.Shop.Strategy
         {
             var cart = new ShoppingCart();
 
-            ShowShopInterface(prices);
-
-            //to be implemented when i figure out commands
+            //ShowShopInterface(prices);
             while (cart.IsShopping)
             {
                 ShowShopInterface(prices);
@@ -75,7 +73,7 @@ namespace WarSimulator.Shop.Strategy
         {
             if(cart.Items.Count == 0)
             {
-                Console.WriteLine(nation.Gold);
+                Console.WriteLine($"Current budget: {nation.Gold}");
                 return;
             }
 

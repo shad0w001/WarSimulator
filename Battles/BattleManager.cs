@@ -46,7 +46,6 @@ namespace WarSimulator.Battles
             {
                 if(nation.Army.Count == 0)
                 {
-                    Console.WriteLine($"{nation.GetType().Name} has no standing army");
                     return false;
                 }
             }
@@ -142,13 +141,13 @@ namespace WarSimulator.Battles
         {
             for(int i = 0;  i < attackerNumberOfAttacks - 1; i++)
             {
-                var attacker = PickRandomTroop(attackingNationTroops);
-                var defender = PickRandomTroop(defendingNationTroops);
-
-                if(!CheckIfNationsHaveArmies([attackingNation, defendingNation]))
+                if (!CheckIfNationsHaveArmies([attackingNation, defendingNation]))
                 {
                     return;
                 }
+
+                var attacker = PickRandomTroop(attackingNationTroops);
+                var defender = PickRandomTroop(defendingNationTroops);
 
                 Attack(attacker, defender);
 

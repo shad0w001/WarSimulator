@@ -29,10 +29,9 @@ namespace WarSimulator.Shop.Strategy
         {
             int gold = nation.Gold;
 
-            // Extract units and their attack values
             var availableUnits = GetUnitStats(nation);
 
-            // Sort available units by attack-to-price ratio (higher is better)
+            //sort units by attack to price ratio
             availableUnits = availableUnits.OrderByDescending(u => (double)u.Item2 / u.Item3).ToList();
 
             var selectedStrategy = SelectStrategy(availableUnits, gold);
@@ -44,7 +43,7 @@ namespace WarSimulator.Shop.Strategy
 
         private List<Tuple<string, double, int>> GetUnitStats(INation nation)
         {
-            var availableUnits = new List<Tuple<string, double, int>>(); // Tuple<unit, attack, price>
+            var availableUnits = new List<Tuple<string, double, int>>(); // Tuple<unitName, attack, price>
 
             foreach (FactoryUnit unit in nation._rectruitmentCenter._factoryUnits)
             {
@@ -116,10 +115,10 @@ namespace WarSimulator.Shop.Strategy
                 strategies.Add(strategy);
             }
 
-            // Select a random strategy from the list of strategies
+            //select random strategy
             Dictionary<string, int> selectedStrategy = strategies[random.Next(strategies.Count)];
 
-            // Convert the dictionary to the desired format with string values
+            //convert the dictionary from string int to string string
             Dictionary<string, string> result = selectedStrategy.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToString());
 
             return result;

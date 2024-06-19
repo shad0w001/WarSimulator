@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace WarSimulator.Shop.ShoppingCartImp
 {
@@ -18,6 +20,14 @@ namespace WarSimulator.Shop.ShoppingCartImp
 
         public void AddItemsToCart(IShoppingCartItem item)
         {
+            var alreadyExistingItem = Items.Where(item => item.Name.ToLower() == item.Name.ToLower()).FirstOrDefault();
+
+            if(alreadyExistingItem is not null)
+            {
+                alreadyExistingItem.Amount = (int.Parse(alreadyExistingItem.Amount) + int.Parse(item.Amount)).ToString();
+                return;
+            }
+
             Items.Add(item);
         }
 
@@ -26,9 +36,18 @@ namespace WarSimulator.Shop.ShoppingCartImp
             Items.Clear();
         }
 
-        public void RemoveItemsFromCart(string name)
+        public void RemoveItemsFromCart(IShoppingCartItem item)
         {
-            Items.Remove(Items.Where(item => item.Name.ToLower() == name.ToLower()).FirstOrDefault());
+            var alreadyExistingItem = Items.Where(item => item.Name.ToLower() == item.Name.ToLower()).FirstOrDefault();
+
+            if (alreadyExistingItem is not null &&
+                int.Parse(alreadyExistingItem.Amount) > int.Parse(item.Amount))
+            {
+                alreadyExistingItem.Amount = (int.Parse(alreadyExistingItem.Amount) - int.Parse(item.Amount)).ToString();
+                return;
+            }
+
+            Items.Remove(Items.Where(item => item.Name.ToLower() == item.Name.ToLower()).FirstOrDefault());
         }
         public void RemoveLastItemFromCart()
         {
