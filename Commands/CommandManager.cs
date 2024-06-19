@@ -36,6 +36,7 @@ namespace WarSimulator.Commands
             else
             {
                 Console.WriteLine("Invalid command.");
+                ExecuteGameCommand(Console.ReadLine());
             }
         }
 

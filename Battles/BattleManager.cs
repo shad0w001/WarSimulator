@@ -13,6 +13,11 @@ namespace WarSimulator.Battles
         private Random random = new Random();
         public void ExecuteBattleCycle(INation nationOne, INation nationTwo)
         {
+            if(!CheckIfNationsHaveArmies([nationOne, nationTwo]))
+            {
+                return;
+            }
+
             if (random.NextDouble() > 0.8)
             {
                 Console.WriteLine("No battle this cycle");
@@ -79,8 +84,13 @@ namespace WarSimulator.Battles
             }
 
             double damage = attacker.Attack - defender.Defence;
-            if (damage < 0) damage = 0;
+            if (damage < 0)
+            {
+                damage = 0;
+            }
+
             defender.Life -= damage;
+            Console.WriteLine($"({attacker.Life}){attacker.GetType().Name} dealt {damage} damage to ({defender.Life}){defender.GetType().Name}");
         }
         private List<ITroop> GetRandomTroops(INation nation)
         {

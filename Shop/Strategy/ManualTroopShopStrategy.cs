@@ -56,7 +56,7 @@ namespace WarSimulator.Shop.Strategy
         {
             if(cart.Items.Count == 0)
             {
-                Console.WriteLine("There are no items in the cart.");
+                Console.WriteLine("There are no items in the cart.\n");
                 return;
             }
 
@@ -68,6 +68,7 @@ namespace WarSimulator.Shop.Strategy
                     Console.WriteLine($"{item.Amount}x {item.Name}");
                 }
             }
+            Console.WriteLine();
         }
         private void DisplayCurrentBudget(INation nation, IShoppingCart cart, Dictionary<string, int> prices)
         {

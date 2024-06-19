@@ -20,7 +20,7 @@ namespace WarSimulator.Shop.ShoppingCartImp
 
         public void AddItemsToCart(IShoppingCartItem item)
         {
-            var alreadyExistingItem = Items.Where(item => item.Name.ToLower() == item.Name.ToLower()).FirstOrDefault();
+            var alreadyExistingItem = Items.Where(x => x.Name.ToLower() == item.Name.ToLower()).FirstOrDefault();
 
             if(alreadyExistingItem is not null)
             {
@@ -38,7 +38,12 @@ namespace WarSimulator.Shop.ShoppingCartImp
 
         public void RemoveItemsFromCart(IShoppingCartItem item)
         {
-            var alreadyExistingItem = Items.Where(item => item.Name.ToLower() == item.Name.ToLower()).FirstOrDefault();
+            var alreadyExistingItem = Items.Where(x => x.Name.ToLower() == item.Name.ToLower()).FirstOrDefault();
+
+            if(alreadyExistingItem is null)
+            {
+                return;
+            }
 
             if (alreadyExistingItem is not null &&
                 int.Parse(alreadyExistingItem.Amount) > int.Parse(item.Amount))
@@ -47,7 +52,7 @@ namespace WarSimulator.Shop.ShoppingCartImp
                 return;
             }
 
-            Items.Remove(Items.Where(item => item.Name.ToLower() == item.Name.ToLower()).FirstOrDefault());
+            Items.Remove(Items.Where(x => x.Name.ToLower() == item.Name.ToLower()).FirstOrDefault());
         }
         public void RemoveLastItemFromCart()
         {
